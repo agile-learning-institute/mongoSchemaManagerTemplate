@@ -1,0 +1,19 @@
+#!/bin/bash
+
+case $1 in 
+
+"run")
+    docker run  -d -v ./test/resources:/opt/mongoSchemaManager/config \
+                -e DB_NAME=YourDbName LOAD_TEST_DATA=true \
+            --name msm ghcr.io/agile-learning-institute/mongoSchemaManager:latest
+    ;;
+
+"build")
+    docker build --tag YOU/PROJECT:latest .
+    ;;
+
+"test")
+    docker run --name PROJECT YOU/PROJECT:latest
+    ;;
+    
+esac
