@@ -9,4 +9,4 @@ FROM mongoSchemaManager:latest
 # ENV LOAD_TEST_DATA=false
 
 # Copy files 
-COPY ./config /opt/mongoSchemaManager/config
+COPY ./config /opt/mongoSchemaManager/configurations
