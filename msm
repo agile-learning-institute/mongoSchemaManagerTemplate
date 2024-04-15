@@ -3,9 +3,9 @@
 case $1 in 
 
 "run")
-    docker run  -d -v ./test/resources:/opt/mongoSchemaManager/config \
+    docker run  -d -v ./test/resources:/opt/mongoSchemaManager/configurations \
                 -e DB_NAME=YourDbName LOAD_TEST_DATA=true \
-            --name msm ghcr.io/agile-learning-institute/mongoSchemaManager:latest
+            --name msm ghcr.io/agile-learning-institute/msm:latest
     ;;
 
 "build")
