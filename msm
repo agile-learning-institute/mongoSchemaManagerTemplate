@@ -1,19 +1,30 @@
 #!/bin/bash
 
+docker compose --profile msmtest down
+docker compose --profile testing down
+
+# Main switch for handling different commands
 case $1 in 
-
-"run")
-    docker run  -d -v ./test/resources:/opt/mongoSchemaManager/configurations \
-                -e DB_NAME=YourDbName LOAD_TEST_DATA=true \
-            --name msm ghcr.io/agile-learning-institute/msm:latest
-    ;;
-
-"build")
-    docker build --tag YOU/PROJECT:latest .
-    ;;
-
-"test")
-    docker run --name PROJECT YOU/PROJECT:latest
-    ;;
-    
+    "test")
+        # Nested switch for handling specific test environments
+        case $2 in
+            "local")
+                docker compose --profile msmtest up --detach
+                docker-compose logs -f "msm"
+                ;;
+            "container")
+                docker build --tag local/test:latest .
+                docker compose --profile testing up --detach
+                docker-compose logs -f "test"
+                ;;
+            *)
+                echo "Usage: msm test [local | container]"
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo "Usage: msm test [local | container]"
+        exit 1
+        ;;
 esac

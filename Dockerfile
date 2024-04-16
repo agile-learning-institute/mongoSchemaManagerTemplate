@@ -5,8 +5,8 @@ FROM ghcr.io/agile-learning-institute/msm:latest
 # ENV CONNECTION_STRING=mongodb://root:example@localhost:27017
 # ENV CONFIG_FOLDER=/opt/mongoSchemaManager/config
 # ENV MSM_TYPES=/opt/mongoSchemaManager/msmTypes
-ENV DB_NAME=mentorHub
-ENV LOAD_TEST_DATA=true
+# ENV LOAD_TEST_DATA=true
+# ENV DB_NAME=mentorHub
 
 # Copy files 
-COPY ./config /opt/mongoSchemaManager/configurations
+COPY configurations /opt/mongoSchemaManager/configurations

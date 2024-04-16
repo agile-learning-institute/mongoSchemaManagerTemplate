@@ -9,7 +9,11 @@
             "bsonType": "objectId"
         },
         "name": {
-            "description": "VERSION document only",
+            "description": "VERSION document name",
+            "msmType": "msmWord"
+        },
+        "version": {
+            "description": "VERSION document version number",
             "msmType": "msmWord"
         }
     },

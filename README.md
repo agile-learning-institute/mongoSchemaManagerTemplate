@@ -1,27 +1,48 @@
 # mongoSchemaManagerTemplate
 This is the template for using the mongoSchemaManager container. You can delete the sections below as you complete each setup.
 
-- [ ] Define your Collections
-
-Start by creating a collection configuration json file for each of your collections in the [collections folder](./config/collections/). 
-The configuration file name should be the collection name with a ``.json`` extension. 
-Collection configuration files must conform to the collection [config-schema.json](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/config-schema.json) schema. See the [sample.json](./config/collections/sample.json) configuration file in the collections folder for the simplest possible configuration, and see [collections configuration files](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#collections-configuration-files) in the reference for details.
-
-- [ ] Define Enumerations
-
-Every system will have some set of enumerated valid values. You should add yours to the [enumerations data file](./config/enumerators/enumerators.json). See [Enumerations](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#enumerations) in the reference for details.
-
-- [ ] Build Schema's
-
-Now it's time to document your schemas. You will create a schema json file for each version of a collection in the schemas folder. See [Schema Pre-Processing](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#schema-pre-processing) in the reference for details. The file name must be the collectionName-versionNumber where versionNumber is a 3-part scemantic version number. See [Collection Version Numbers](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#collection-version-numbers) in the reference for additional context on version numbers.
-
-- [ ] Creating Test Data
-
-If you want to create a test database with some set of testing data pre-loaded, you will want to create the test data files in the [testData](./config/testData/) folder. See [Loading Test Data](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#loading-test-data) in the reference for details.
-
 - [ ] Update msm bash script
 
-You will want to edit the [msm bash script](./msm) to provide your database name and other configuration values, as well as container registry names and tags. 
+The [msm bash script](./msm) is used to run various configurations of your database project. You will want to replace ``local/test:latest`` with your desired image ``user/name:tag``
+
+- [ ] Update docker-compose.yaml
+
+You will want to make a similar adjustment in the docker-compose.yaml file, replacing ``local/test:latest`` with your desired image ``user/name:tag``
+
+- [ ] Update Dockerfile
+
+Update the Dockerfile to provide environment variable values for your configuration. The commented values are the same as the default values, so if you don't set one that is the value that will be used. 
+
+## Confirm msm configurations
+
+- [ ] run ``./msm test local`` and confirm that you get a log file ending with ``exited with code 0``
+- [ ] run ``./msm test container`` and confirm that you get a log file ending with ``exited with code 0`` 
+
+## Getting Started
+
+At first, you should start by completing the following steps for one collection at a time. This will make configuration errors eaiser to find and correct.
+
+- [ ] Define your Collection in the [configurations/collections folder](./configurations/collections/)
+
+You can rename and use the existing [sample.json](./configurations/collections/sample.json) file, for the simplest possible configuration. See [collections configuration files](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#collections-configuration-files) in the reference for details.
+
+- [ ] Build the Schema
+
+You can use any valid mongodb BSON schema. We suggest that you start with a simple schema, with no constraints like enumerators or patterns. 
+
+- [ ] Test your schema using the ``./msm test local`` command to confirm that your schema is valid.
+
+- [ ] Implement [Custom Types](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#msmtype) in your schema to eaisly add constraints. Then test again.
+
+- [ ] Define your [Enumerations](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#enumerations) in the [enumerators.json file](./configurations/enumerators/enumerators.json). 
+
+- [ ] Implement [Enumerated Types](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#msmenums) in your schema, then Test again.
+
+- [ ] Creat Test Data
+
+If you want to create a test database with some set of testing data pre-loaded, you will want to create the test data files in the [testData](./configurations/testData/) folder. See [Loading Test Data](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#loading-test-data) in the reference for details.
+
+That should get you started. See the [official reference](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md) on GitHub for more information on how to configure indexes and migrations.
 
 YOUR README BELOW
 --------------------------------------
@@ -33,15 +54,10 @@ Describe your project here, at a minimum you should list and describe the collec
 
 ## Testing your configurations locally
 ```bash
-./msm run
+./msm test local
 ```
 
-## Build the container 
+## Build and Test the container 
 ```bash
-./msm build
-```
-
-## Test the container
-```bash
-./msm test
+./msm test container
 ```
