@@ -7,8 +7,8 @@ Update the Dockerfile to provide environment variable values for your configurat
 
 ## Confirm msm configurations
 
-- [ ] run ``./msm test local`` and confirm that you get a log file ending with ``exited with code 0``
-- [ ] run ``./msm test container`` and confirm that you get a log file ending with ``exited with code 0`` 
+- [ ] run ``./msm test local`` and confirm that you get a log file ending with ``Processing completed successfully!, exited with code 0``
+- [ ] run ``./msm test container`` and confirm that you get a log file ending with ``Processing completed successfully!, exited with code 0`` 
 
 ## Getting Started
 
@@ -18,9 +18,11 @@ At first, you should start by completing the following steps for one collection 
 
 You can rename and use the existing [sample.json](./configurations/collections/sample.json) file, for the simplest possible configuration. See [collections configuration files](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#collections-configuration-files) in the reference for details.
 
-- [ ] Build the Schema
+- [ ] Build the Schema. 
 
-- [ ] Test your schema using the ``./msm test local`` command to confirm that your schema is valid. After a few seconds you should see a log entry ending with rocessing completed successfully! 
+You can rename and use the existing [sample-1.0.0.json](./configurations/schemas/sample-1.0.0.json) schema file. You can create any valid bson schema, but start simple and add constraints incrementally.
+
+- [ ] Test your schema using the ``./msm test local`` command to confirm that your schema is valid. Look for that ``Processing completed successfully!``" message
 
 ## Your Are Started!
 You can use any valid mongodb BSON schema. If you want to build a test databasee, take advantage of msm custom types, or enumerator management features you can continue with the following steps. 
