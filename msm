@@ -1,12 +1,12 @@
 #!/bin/bash
 
-docker compose --profile msmtest down
-docker compose --profile testing down
-
 # Main switch for handling different commands
 case $1 in 
     "test")
-        # Nested switch for handling specific test environments
+        # Shut down related running containers
+        docker compose --profile msmtest down
+        docker compose --profile testing down
+
         case $2 in
             "local")
                 docker compose --profile msmtest up --detach
@@ -23,8 +23,13 @@ case $1 in
                 ;;
         esac
         ;;
+
+    "deploy")
+        mv ./configurations/openApi/* ./docs
+        ;;
+
     *)
-        echo "Usage: msm test [local | container]"
+        echo "Usage: msm [test | deploy]"
         exit 1
         ;;
 esac
