@@ -1,15 +1,7 @@
 # mongoSchemaManagerTemplate
 This is the template for using the mongoSchemaManager container. You can delete the sections below as you complete each setup.
 
-- [ ] Update msm bash script
-
-The [msm bash script](./msm) is used to run various configurations of your database project. You will want to replace ``local/test:latest`` with your desired image ``user/name:tag``
-
-- [ ] Update docker-compose.yaml
-
-You will want to make a similar adjustment in the docker-compose.yaml file, replacing ``local/test:latest`` with your desired image ``user/name:tag``
-
-- [ ] Update Dockerfile
+- [ ] Update [Dockerfile](./Dockerfile)
 
 Update the Dockerfile to provide environment variable values for your configuration. The commented values are the same as the default values, so if you don't set one that is the value that will be used. 
 
@@ -28,9 +20,11 @@ You can rename and use the existing [sample.json](./configurations/collections/s
 
 - [ ] Build the Schema
 
-You can use any valid mongodb BSON schema. We suggest that you start with a simple schema, with no constraints like enumerators or patterns. 
+- [ ] Test your schema using the ``./msm test local`` command to confirm that your schema is valid. After a few seconds you should see a log entry ending with rocessing completed successfully! 
 
-- [ ] Test your schema using the ``./msm test local`` command to confirm that your schema is valid.
+## Your Are Started!
+You can use any valid mongodb BSON schema. If you want to build a test databasee, take advantage of msm custom types, or enumerator management features you can continue with the following steps. 
+
 
 - [ ] Implement [Custom Types](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#msmtype) in your schema to eaisly add constraints. Then test again.
 
@@ -38,7 +32,7 @@ You can use any valid mongodb BSON schema. We suggest that you start with a simp
 
 - [ ] Implement [Enumerated Types](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#msmenums) in your schema, then Test again.
 
-- [ ] Creat Test Data
+- [ ] Create Test Data
 
 If you want to create a test database with some set of testing data pre-loaded, you will want to create the test data files in the [testData](./configurations/testData/) folder. See [Loading Test Data](https://github.com/agile-learning-institute/mongoSchemaManager/blob/main/docs/REFERENCE.md#loading-test-data) in the reference for details.
 
@@ -60,4 +54,9 @@ Describe your project here, at a minimum you should list and describe the collec
 ## Build and Test the container 
 ```bash
 ./msm test container
+```
+
+## Deploy OpenApi to /docs
+```bash
+./msm deploy
 ```
