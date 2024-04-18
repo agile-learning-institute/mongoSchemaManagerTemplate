@@ -1,11 +1,17 @@
 #!/bin/bash
 
+function down {
+    docker compose --profile msmtest down
+    docker compose --profile testing down
+    docker image prune -f
+    docker volume prune -f
+}
+
 # Main switch for handling different commands
 case $1 in 
     "test")
         # Shut down related running containers
-        docker compose --profile msmtest down
-        docker compose --profile testing down
+        down
 
         case $2 in
             "local")
@@ -26,6 +32,10 @@ case $1 in
 
     "deploy")
         mv ./configurations/openApi/* ./docs
+        ;;
+
+    "down")
+        down
         ;;
 
     *)
