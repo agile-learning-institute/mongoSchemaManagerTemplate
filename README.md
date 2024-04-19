@@ -48,17 +48,25 @@ Describe your project here, at a minimum you should list and describe the collec
 ## Prerequisites
 - [Docker](https://www.docker.com/products/docker-desktop/)
 
+## Currently Deployed Schema documentation
+View [OpenApi specifications](https://flatballflyer.github.io/testSchemaManager/) for the collections
+
 ## Testing your configurations locally
 ```bash
 ./msm test local
 ```
 
-## Build and Test the container 
+## Build and test the container 
 ```bash
 ./msm test container
 ```
 
-## Deploy OpenApi to /docs
+## Deploy the latest OpenApi viewer
 ```bash
 ./msm deploy
+```
+
+## Shut down services after testing
+```bash
+./msm down
 ```
