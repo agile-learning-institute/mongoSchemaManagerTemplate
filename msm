@@ -22,6 +22,7 @@ case $1 in
                 docker build --tag local/test:latest .
                 docker compose --profile testing up --detach
                 docker-compose logs -f "test"
+                mv ./configurations/openApi/* ./docs
                 ;;
             *)
                 echo "Usage: msm test [local | container]"
@@ -30,16 +31,12 @@ case $1 in
         esac
         ;;
 
-    "deploy")
-        mv ./configurations/openApi/* ./docs
-        ;;
-
     "down")
         down
         ;;
 
     *)
-        echo "Usage: msm [test | deploy]"
+        echo "Usage: msm [test | down]"
         exit 1
         ;;
 esac

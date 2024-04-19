@@ -61,11 +61,6 @@ View [OpenApi specifications](https://flatballflyer.github.io/testSchemaManager/
 ./msm test container
 ```
 
-## Deploy the latest OpenApi viewer
-```bash
-./msm deploy
-```
-
 ## Shut down services after testing
 ```bash
 ./msm down
