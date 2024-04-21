@@ -22,7 +22,7 @@ case $1 in
                 docker build --tag local/test:latest .
                 docker compose --profile testing up --detach
                 docker-compose logs -f "test"
-                mv ./configurations/openApi/* ./docs
+                mv ./configurations/openApi/* ./docs/
                 ;;
             *)
                 echo "Usage: msm test [local | container]"
