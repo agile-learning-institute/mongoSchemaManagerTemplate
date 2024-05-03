@@ -53,15 +53,15 @@ View [OpenApi specifications](https://flatballflyer.github.io/testSchemaManager/
 
 ## Testing your configurations locally
 ```bash
-./msm test local
+make local
 ```
 
 ## Build and test the container 
 ```bash
-./msm test container
+make container
 ```
 
 ## Shut down services after testing
 ```bash
-./msm down
+make down
 ```
