@@ -9,7 +9,7 @@ local:
 	docker-compose logs -f "msm"
 	rm -rf ./docs/
 	mkdir -p ./docs/
-	mv ./configurations/openApi/* ./docs/
+	ls -1 ./configurations/openApi | grep -v empty | xargs -I{} mv ./configurations/openApi/{} ./docs/
 
 # Build and run the Docker container
 container:
@@ -21,6 +21,6 @@ container:
 # Shut down testing containers and clean house
 down:
 	docker compose --profile msmtest down
-    docker compose --profile testing down
-    docker image prune -f
-    docker volume prune -f
+	docker compose --profile testing down
+	docker image prune -f
+	docker volume prune -f
