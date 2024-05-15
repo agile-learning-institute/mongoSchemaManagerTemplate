@@ -5,10 +5,14 @@ This is the template for using the mongoSchemaManager container. You can delete 
 
 Update the Dockerfile to provide environment variable values for your configuration. The commented values are the same as the default values, so if you don't set one that is the value that will be used. 
 
-## Confirm msm configurations
+- [ ] Update [makefile](./makefile)
 
-- [ ] run ``./msm test local`` and confirm that you get a log file ending with ``Processing completed successfully!, exited with code 0``
-- [ ] run ``./msm test container`` and confirm that you get a log file ending with ``Processing completed successfully!, exited with code 0`` 
+Update the makefile to provide the container name you will use when building the container. 
+
+## Confirm basic configurations
+
+- [ ] run ``make local`` and confirm that you get a log file ending with ``Processing completed successfully!, exited with code 0``
+- [ ] run ``make container`` and confirm that you get a log file ending with ``Processing completed successfully!, exited with code 0`` 
 
 ## Getting Started
 
@@ -22,7 +26,7 @@ You can rename and use the existing [sample.json](./configurations/collections/s
 
 You can rename and use the existing [sample-1.0.0.json](./configurations/schemas/sample-1.0.0.json) schema file. You can create any valid bson schema, but start simple and add constraints incrementally.
 
-- [ ] Test your schema using the ``./msm test local`` command to confirm that your schema is valid. Look for that ``Processing completed successfully!``" message
+- [ ] Test your schema using the ``make local`` command to confirm that your schema is valid. Look for that ``Processing completed successfully!``" message
 
 ## Your Are Started!
 You can use any valid mongodb BSON schema. If you want to build a test databasee, take advantage of msm custom types, or enumerator management features you can continue with the following steps. 
